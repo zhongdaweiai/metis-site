@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Metis Dashboard</title>
+  <style>
+    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; }
+    body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
+    header { background:#101820; color:white; padding:22px 28px 18px; }
+    h1 { margin:0 0 6px; font-size:26px; letter-spacing:0; }
+    .subtitle { color:#c8d2df; font-size:14px; }
+    nav { display:flex; gap:10px; flex-wrap:wrap; padding:12px 28px; background:#162331; border-top:1px solid #243346; }
+    nav a { color:#dce6f2; text-decoration:none; padding:7px 10px; border-radius:6px; font-size:14px; }
+    nav a.active, nav a:hover { background:#24364a; color:white; }
+    main { padding:22px 28px 48px; display:grid; gap:20px; }
+    section, .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; overflow-x:auto; }
+    h2 { margin:0 0 12px; font-size:19px; }
+    h3 { margin:18px 0 10px; font-size:16px; }
+    p, li { line-height:1.55; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    th,td { padding:8px 10px; border-bottom:1px solid #e8ebef; text-align:left; vertical-align:top; }
+    th { background:#f0f3f6; font-weight:650; }
+    code { background:#eef2f5; border:1px solid #dde4ea; border-radius:4px; padding:1px 4px; }
+    a { color:var(--accent); }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Metis</h1>
+    <div class="subtitle">Outcome-first market learning system · generated 2026-05-01T05:22:20+00:00</div>
+  </header>
+  <nav><a class="active" href="index.html">Dashboard</a><a class="" href="daily-brief.html">Daily Brief</a><a class="" href="anomalies.html">Anomalies</a><a class="" href="news.html">News</a><a class="" href="patterns.html">Patterns</a></nav>
+  <main>
+    <div class="grid">
+      <section><h2>Price Queue</h2><table><thead><tr><th>as_of</th><th>ticker</th><th>name</th><th>adjusted_return</th><th>return_z</th><th>volume_z</th><th>trigger</th></tr></thead><tbody><tr><td>2026-04-30</td><td>QCOM</td><td>Qualcomm</td><td>+14.18%</td><td>6.4137</td><td>4.3780</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>PWR</td><td>Quanta Services</td><td>+13.04%</td><td>6.8934</td><td>4.2027</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>WTW</td><td>Willis Towers Watson</td><td>-12.09%</td><td>-4.9965</td><td>2.1767</td><td>negative_adjusted_return;return_zscore</td></tr><tr><td>2026-04-30</td><td>TER</td><td>Teradyne</td><td>+11.19%</td><td>2.3256</td><td>2.0474</td><td>positive_adjusted_return;return_zscore</td></tr><tr><td>2026-04-30</td><td>SWKS</td><td>Skyworks Solutions</td><td>+11.05%</td><td>5.9121</td><td>3.9056</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>IP</td><td>International Paper</td><td>-10.41%</td><td>-3.2646</td><td>4.5607</td><td>negative_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>CIEN</td><td>Ciena</td><td>+10.05%</td><td>2.2590</td><td>-0.2084</td><td>positive_adjusted_return;return_zscore</td></tr><tr><td>2026-04-30</td><td>HUBB</td><td>Hubbell Incorporated</td><td>-9.65%</td><td>-3.2828</td><td>4.5968</td><td>negative_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>META</td><td>Meta Platforms</td><td>-9.48%</td><td>-3.6111</td><td>6.3579</td><td>negative_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>GOOG</td><td>Alphabet Inc. (Class C)</td><td>+9.04%</td><td>5.6902</td><td>3.0924</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>GOOGL</td><td>Alphabet Inc. (Class A)</td><td>+9.03%</td><td>5.4640</td><td>3.1269</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>IRM</td><td>Iron Mountain</td><td>+8.27%</td><td>4.6311</td><td>4.1978</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>BLDR</td><td>Builders FirstSource</td><td>-7.88%</td><td>-1.6986</td><td>4.1486</td><td>negative_adjusted_return;volume_zscore</td></tr><tr><td>2026-04-30</td><td>LLY</td><td>Lilly (Eli)</td><td>+7.59%</td><td>3.7375</td><td>3.8833</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-04-30</td><td>GLW</td><td>Corning Inc.</td><td>+7.19%</td><td>1.8212</td><td>0.1262</td><td>positive_adjusted_return</td></tr></tbody></table></section>
+      <section><h2>News Queue</h2><table><thead><tr><th>trigger_score</th><th>source</th><th>published_at</th><th>tickers</th><th>tags</th><th>title</th></tr></thead><tbody><tr><td>0.75</td><td>SEC Current 8-K</td><td>2026-04-30T17:16:04-04:00</td><td></td><td>mna;regulatory</td><td>8-K - Plutonian Acquisition Corp. II (0002065661) (Filer)</td></tr><tr><td>0.75</td><td>SEC Current 8-K</td><td>2026-04-30T17:14:38-04:00</td><td></td><td>mna;regulatory</td><td>8-K - Bakkt, Inc. (0001820302) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:30:48-04:00</td><td></td><td>earnings</td><td>8-K - DBV Technologies S.A. (0001613780) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:29:54-04:00</td><td></td><td>regulatory</td><td>8-K - DYNAMIC AEROSPACE SYSTEMS Corp (0001854526) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:29:44-04:00</td><td></td><td>regulatory</td><td>8-K - Prologis, L.P. (0001045610) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:29:44-04:00</td><td></td><td>regulatory</td><td>8-K - Prologis, Inc. (0001045609) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:29:10-04:00</td><td></td><td>regulatory</td><td>8-K - Noble Corp plc (0001895262) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:27:34-04:00</td><td></td><td>earnings</td><td>8-K - APTARGROUP, INC. (0000896622) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:21:16-04:00</td><td></td><td>mna</td><td>8-K - SIM Acquisition Corp. I (0002014982) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:20:43-04:00</td><td></td><td>regulatory</td><td>8-K - Glucotrack, Inc. (0001506983) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:19:45-04:00</td><td></td><td>mna</td><td>8-K - Z Squared Inc. (0001759186) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-04-30T17:17:45-04:00</td><td></td><td>earnings</td><td>8-K - FEDERATED HERMES, INC. (0001056288) (Filer)</td></tr><tr><td>0.60</td><td>Yahoo Finance</td><td>2026-04-29T17:32:40Z</td><td></td><td>funding;guidance</td><td>UBS Raises its Price Target on Freeport-McMoRan (FCX) to $74</td></tr><tr><td>0.60</td><td>Yahoo Finance</td><td>2026-04-29T17:32:48Z</td><td></td><td>funding;guidance</td><td>Argus Raises its Price Target on BHP Group (BHP) to $95</td></tr><tr><td>0.60</td><td>Yahoo Finance</td><td>2026-04-29T17:32:35Z</td><td></td><td>funding;guidance</td><td>Scotiabank Raises its Price Target on Teck Resources (TECK) to C$80</td></tr></tbody></table></section>
+    </div>
+    <section><h2>Pattern Library</h2><table><thead><tr><th>pattern_id</th><th>pattern_family</th><th>base_rate_status</th><th>example_case_ids</th></tr></thead><tbody><tr><td>customer_vertical_integration_capex_mix_shift</td><td>cross_asset_transmission</td><td>low_n</td><td>nvda_2026_04_30</td></tr><tr><td>inventory_cycle_guidance_reversal</td><td>earnings_surprise</td><td>low_n</td><td>pi_2026_04_30</td></tr><tr><td>new_tam_repricing_from_platform_pivot</td><td>narrative_repricing</td><td>low_n</td><td>qcom_2026_04_30</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>cross_asset_transmission</td><td>low_n</td><td>pwr_2026_04_30;cat_2026_04_30;carr_2026_04_30</td></tr><tr><td>organic_growth_quality_miss</td><td>earnings_quality</td><td>low_n</td><td>wtw_2026_04_30</td></tr><tr><td>cyclical_guidance_cut_on_cost_pressure</td><td>earnings_quality</td><td>low_n</td><td>ip_2026_04_30</td></tr><tr><td>legacy_asset_ai_infrastructure_repricing</td><td>narrative_repricing</td><td>low_n</td><td>irm_2026_04_30</td></tr><tr><td>guidance_raise_plus_pipeline_derisking</td><td>fundamental_repricing</td><td>low_n</td><td>lly_2026_04_30</td></tr><tr><td>segment_acceleration_repricing</td><td>earnings_surprise</td><td>low_n</td><td>txt_2026_04_30</td></tr><tr><td>segment_mix_repricing</td><td>earnings_surprise</td><td>low_n</td><td>carr_2026_04_30</td></tr></tbody></table></section>
+    <section><h2>Bayesian Belief State</h2><p class="muted">No rows yet.</p></section>
+    </main>
+</body>
+</html>
