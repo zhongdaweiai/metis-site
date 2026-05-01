@@ -1,0 +1,1 @@
+prediction_id,created_at,source_event_id,pattern_id,chain_ids,source_asset,target_asset,target_role,horizon,predicted_direction,predicted_probability,expected_magnitude,confidence_score,tradability_score,decision,entry_price,exit_price,actual_return,benchmark_return,adjusted_return,outcome_direction,hit,brier_score,lesson,status
