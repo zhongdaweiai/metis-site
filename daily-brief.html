@@ -42,6 +42,15 @@
     .appendix { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
     .appendix-link { display:grid; gap:4px; border:1px solid #e0e5ea; border-radius:8px; padding:12px; text-decoration:none; background:#fbfcfd; }
     .appendix-link span { color:var(--muted); font-size:12px; }
+    .feed-box { display:grid; gap:10px; }
+    .feed-row { display:grid; gap:5px; }
+    .feed-row label { color:var(--muted); font-size:12px; font-weight:650; text-transform:uppercase; letter-spacing:.03em; }
+    input, select, textarea { width:100%; box-sizing:border-box; border:1px solid #cfd7df; border-radius:7px; padding:9px 10px; font:inherit; background:white; color:var(--ink); }
+    textarea { resize:vertical; min-height:118px; }
+    .feed-actions { display:flex; gap:8px; flex-wrap:wrap; }
+    button { border:1px solid var(--accent); border-radius:7px; background:var(--accent); color:white; padding:9px 11px; font:inherit; font-weight:650; cursor:pointer; }
+    button.secondary { background:white; color:var(--accent); }
+    .feed-status { color:var(--muted); font-size:12px; margin:0; }
     table { width:100%; border-collapse:collapse; font-size:13px; }
     th,td { padding:8px 10px; border-bottom:1px solid #e8ebef; text-align:left; vertical-align:top; }
     th { background:#f0f3f6; font-weight:650; }
@@ -53,24 +62,26 @@
 <body>
   <header>
     <h1>Metis</h1>
-    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:17:43+00:00</div>
+    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:32:13+00:00</div>
   </header>
-  <nav><a class="" href="index.html">认知面板</a><a class="active" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
+  <nav><a class="" href="index.html">认知面板</a><a class="" href="feed.html">输入流</a><a class="active" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
   <main><section><h1>Metis Daily Brief</h1>
 <ul>
-<li>Generated at: 2026-05-03T00:16:38+00:00</li>
+<li>Generated at: 2026-05-03T00:32:13+00:00</li>
 <li>Price anomaly candidates: 30</li>
 <li>News candidates: 100</li>
 <li>Pattern library size: 10</li>
 <li>Denominator observations: 12</li>
 <li>Registered predictions: 0</li>
 <li>Jaynes model comparisons: 3</li>
+<li>User feed items: 0</li>
 </ul>
 <h2>Key Learning</h2>
 <ul>
 <li>Strongest current explanation: <code>hyp_nvda_20260430_tpu_substitution</code> in <code>nvda_2026_04_30</code> has posterior 75.3% from prior 35.0%.</li>
 <li>Weakened explanation: <code>hyp_nvda_20260430_macro_beta</code> is down to 7.0%.</li>
 <li>Denominator learning: <code>$50 Billion in Revenue a Year: How the Trainium Chip Business Could Soon Seriously Move th</code> added or reinforced 9 no-significant-move samples.</li>
+<li>User feed: no submitted items yet.</li>
 <li>Trading discipline: no forward prediction is registered yet; current output remains research, not a trade signal.</li>
 </ul>
 <h2>High-Signal Price Queue</h2>
@@ -233,13 +244,6 @@
 <td><a href="https://www.marketwatch.com/story/higher-inflation-is-on-the-way-the-fed-needs-to-make-this-clearer-before-it-raises-rates-142c6884?mod=mw_rss_topstories">Higher inflation is on the way. The Fed needs to make this clear before it raises rates.</a></td>
 </tr>
 <tr>
-<td>0.72</td>
-<td>Yahoo Finance</td>
-<td>AMZN</td>
-<td>ai;earnings</td>
-<td><a href="https://finance.yahoo.com/markets/stocks/articles/50-billion-revenue-trainium-chip-173856846.html">$50 Billion in Revenue a Year: How the Trainium Chip Business Could Soon Seriously Move the Needle for Amazon Stock</a></td>
-</tr>
-<tr>
 <td>0.60</td>
 <td>SEC Current 8-K</td>
 <td></td>
@@ -280,6 +284,13 @@
 <td></td>
 <td>regulatory</td>
 <td><a href="https://www.sec.gov/Archives/edgar/data/1759186/000168316826003426/0001683168-26-003426-index.htm">8-K - Z Squared Inc. (0001759186) (Filer)</a></td>
+</tr>
+<tr>
+<td>0.60</td>
+<td>Yahoo Finance</td>
+<td></td>
+<td>guidance;regulatory</td>
+<td><a href="https://finance.yahoo.com/markets/stocks/articles/win-advisors-cuts-ftc-stake-181851747.html">WIN Advisors Cuts Its FTC Stake by $10.6 Million -- Here&#x27;s What Investors Should Know</a></td>
 </tr>
 <tr>
 <td>0.60</td>

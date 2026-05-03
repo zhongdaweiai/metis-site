@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Metis Overview</title>
+  <title>Metis User Feed</title>
   <style>
     :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; --red:#a33d3d; --amber:#9a6a12; --blue:#2f5f95; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
@@ -64,16 +64,10 @@
     <h1>Metis</h1>
     <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:32:13+00:00</div>
   </header>
-  <nav><a class="active" href="index.html">认知面板</a><a class="" href="feed.html">输入流</a><a class="" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
+  <nav><a class="" href="index.html">认知面板</a><a class="active" href="feed.html">输入流</a><a class="" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
   <main>
     <div class="hero">
-      <section>
-        <h2>今日 Metis 认知</h2>
-        <p class="lead">先看结论，再看数据。这里展示的是系统今天形成或更新的世界模型：哪些解释更可信、哪些解释被削弱、哪些新闻只补充分母而不构成交易信号。</p>
-      </section>
-      <section>
-        <h2>输入给 Metis</h2>
-        <form class="feed-box" id="metis-feed-form">
+      <section><h2>提交新资料</h2><form class="feed-box" id="metis-feed-form">
       <div class="feed-row">
         <label for="feed-type">类型</label>
         <select id="feed-type" name="feed_type">
@@ -158,43 +152,14 @@
           }
         });
       })();
-    </script>
-      </section>
+    </script></section>
+      <section><h2>输入流状态</h2><div class="metric-grid">
+        <div class="metric"><div class="metric-label">Total</div><div class="metric-value">0</div><div class="metric-note">user feed items</div></div>
+        <div class="metric"><div class="metric-label">New</div><div class="metric-value">0</div><div class="metric-note">等待 triage</div></div>
+        <div class="metric"><div class="metric-label">High</div><div class="metric-value">0</div><div class="metric-note">高优先级</div></div>
+      </div></section>
     </div>
-    <section>
-      <h2>系统状态</h2>
-      <div class="metric-grid">
-        <div class="metric"><div class="metric-label">机制</div><div class="metric-value">10</div><div class="metric-note">可迁移 patterns</div></div>
-        <div class="metric"><div class="metric-label">假设</div><div class="metric-value">3</div><div class="metric-note">竞争解释</div></div>
-        <div class="metric"><div class="metric-label">证据</div><div class="metric-value">5</div><div class="metric-note">可更新 evidence</div></div>
-        <div class="metric"><div class="metric-label">分母</div><div class="metric-value">12</div><div class="metric-note">最新 2026-05-01</div></div>
-        <div class="metric"><div class="metric-label">预测</div><div class="metric-value">0</div><div class="metric-note">事前记录</div></div>
-        <div class="metric"><div class="metric-label">输入</div><div class="metric-value">0</div><div class="metric-note">用户 feed</div></div>
-        <div class="metric"><div class="metric-label">异常</div><div class="metric-value">30</div><div class="metric-note">待溯源结果</div></div>
-      </div>
-    </section>
-    <section>
-      <h2>重点发现和系统进步</h2>
-      <div class="insight-grid">
-        <article class="insight neutral"><h3>最强解释</h3><p>nvda_2026_04_30: Alphabet Cloud/TPU 和 Amazon Trainium 线索正在强化“AI capex 从 Nvidia 单一受益转向自研/替代 silicon 分流”的解释. Posterior 75.3%, prior 35.0%, 2 条证据。</p></article>
-        <article class="insight negative"><h3>被削弱的解释</h3><p>hyp_nvda_20260430_macro_beta 被证据削弱到 7.0%。</p></article>
-        <article class="insight blue"><h3>分母带来的认知</h3><p>分母样本累计 12 条。最近主要来自 “$50 Billion in Revenue a Year: How the Trainium Chip Business Could Soon Seriously Move the Needle for Amazon ” 这类新闻，记录了 9 个目标资产没有出现显著波动。</p></article>
-        <article class="insight blue"><h3>你的输入流</h3><p>等待你的第一条输入。你给的 link、股价异动、融资消息会进入同一个学习队列。</p></article>
-        <article class="insight warning"><h3>交易纪律</h3><p>当前没有已登记的 forward prediction，说明系统仍处于 research / evidence accumulation 模式，不应把页面解读为交易信号。</p></article>
-      </div>
-    </section>
-    <section>
-      <h2>今日需要研究的异常</h2>
-      <ul class="anomaly-list"><li><span class="ticker">CLX</span><span class="move down">-9.51%</span><span class="muted">Clorox</span></li><li><span class="ticker">CBOE</span><span class="move up">+9.36%</span><span class="muted">Cboe Global Markets</span></li><li><span class="ticker">PSKY</span><span class="move up">+7.34%</span><span class="muted">Paramount Skydance Corporation</span></li><li><span class="ticker">SNDK</span><span class="move up">+7.29%</span><span class="muted">Sandisk</span></li><li><span class="ticker">STX</span><span class="move up">+6.95%</span><span class="muted">Seagate Technology</span></li><li><span class="ticker">SYK</span><span class="move down">-5.90%</span><span class="muted">Stryker Corporation</span></li></ul>
-    </section>
-    <section>
-      <h2>推理排行榜</h2>
-      <table><thead><tr><th>case_id</th><th>hypothesis_id</th><th>prior_probability</th><th>posterior_probability</th><th>evidence_count</th><th>status</th><th>interpretation</th></tr></thead><tbody><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_tpu_substitution</td><td>0.350000</td><td>0.753446</td><td>2</td><td>leading</td><td>evidence strengthened this hypothesis; posterior=75.3%, prior=35.0%</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_positioning_noise</td><td>0.250000</td><td>0.176904</td><td>2</td><td>watch</td><td>evidence only modestly changed this hypothesis; posterior=17.7%, prior=25.0%</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_macro_beta</td><td>0.250000</td><td>0.069650</td><td>1</td><td>weakened</td><td>evidence weakened this hypothesis; posterior=7.0%, prior=25.0%</td></tr></tbody></table>
-    </section>
-    <section>
-      <h2>原始材料入口</h2>
-      <div class="appendix"><a class="appendix-link" href="feed.html"><strong>输入流</strong><span>你提交的 link 和消息</span></a><a class="appendix-link" href="inference.html"><strong>推理账本</strong><span>竞争假设、证据、posterior</span></a><a class="appendix-link" href="anomalies.html"><strong>异常队列</strong><span>价格异常候选</span></a><a class="appendix-link" href="news.html"><strong>新闻队列</strong><span>新闻触发器</span></a><a class="appendix-link" href="denominator.html"><strong>分母样本</strong><span>无显著反应的样本</span></a><a class="appendix-link" href="predictions.html"><strong>事前预测</strong><span>prediction cards</span></a><a class="appendix-link" href="patterns.html"><strong>Patterns</strong><span>可迁移机制库</span></a><a class="appendix-link" href="daily-brief.html"><strong>完整日报</strong><span>原始日报</span></a></div>
-    </section>
+    <section><h2>Latest User Feed</h2><p class="muted">No rows yet.</p></section>
     </main>
 </body>
 </html>
