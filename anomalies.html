@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Metis Anomalies</title>
   <style>
-    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; }
+    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; --red:#a33d3d; --amber:#9a6a12; --blue:#2f5f95; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
     header { background:#101820; color:white; padding:22px 28px 18px; }
     h1 { margin:0 0 6px; font-size:26px; letter-spacing:0; }
@@ -16,23 +16,46 @@
     main { padding:22px 28px 48px; display:grid; gap:20px; }
     section, .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; overflow-x:auto; }
     h2 { margin:0 0 12px; font-size:19px; }
-    h3 { margin:18px 0 10px; font-size:16px; }
+    h3 { margin:0 0 8px; font-size:16px; }
     p, li { line-height:1.55; }
     .muted { color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .hero { display:grid; grid-template-columns:minmax(320px,1.4fr) minmax(280px,.8fr); gap:18px; align-items:stretch; }
+    .lead { font-size:17px; line-height:1.55; max-width:900px; margin:0; }
+    .metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+    .metric { border:1px solid #e3e7ec; border-radius:8px; padding:12px; background:#fbfcfd; }
+    .metric-label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+    .metric-value { font-size:24px; font-weight:700; margin-top:4px; }
+    .metric-note { color:var(--muted); font-size:12px; margin-top:4px; }
+    .insight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+    .insight { border-left:4px solid var(--accent); border-radius:8px; background:#fbfcfd; padding:13px 14px; border-top:1px solid #e5e9ee; border-right:1px solid #e5e9ee; border-bottom:1px solid #e5e9ee; }
+    .insight.warning { border-left-color:var(--amber); }
+    .insight.negative { border-left-color:var(--red); }
+    .insight.blue { border-left-color:var(--blue); }
+    .insight p { margin:0; }
+    .anomaly-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .anomaly-list li { display:grid; grid-template-columns:70px 70px 1fr; gap:10px; align-items:baseline; border-bottom:1px solid #edf0f4; padding-bottom:8px; }
+    .ticker { font-weight:700; }
+    .move { font-variant-numeric:tabular-nums; font-weight:700; }
+    .move.up { color:var(--accent); }
+    .move.down { color:var(--red); }
+    .appendix { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+    .appendix-link { display:grid; gap:4px; border:1px solid #e0e5ea; border-radius:8px; padding:12px; text-decoration:none; background:#fbfcfd; }
+    .appendix-link span { color:var(--muted); font-size:12px; }
     table { width:100%; border-collapse:collapse; font-size:13px; }
     th,td { padding:8px 10px; border-bottom:1px solid #e8ebef; text-align:left; vertical-align:top; }
     th { background:#f0f3f6; font-weight:650; }
     code { background:#eef2f5; border:1px solid #dde4ea; border-radius:4px; padding:1px 4px; }
     a { color:var(--accent); }
+    @media (max-width:760px) { .hero { grid-template-columns:1fr; } .anomaly-list li { grid-template-columns:62px 68px 1fr; } }
   </style>
 </head>
 <body>
   <header>
     <h1>Metis</h1>
-    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:11:57+00:00</div>
+    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:17:43+00:00</div>
   </header>
-  <nav><a class="" href="index.html">Dashboard</a><a class="" href="daily-brief.html">Daily Brief</a><a class="active" href="anomalies.html">Anomalies</a><a class="" href="news.html">News</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">Denominator</a><a class="" href="predictions.html">Predictions</a><a class="" href="inference.html">Inference</a></nav>
+  <nav><a class="" href="index.html">认知面板</a><a class="" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="active" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
   <main><section><h2>Price Anomaly Candidates</h2><table><thead><tr><th>as_of</th><th>ticker</th><th>name</th><th>sector</th><th>benchmark</th><th>adjusted_return</th><th>return_z</th><th>volume_z</th><th>trigger</th><th>status</th></tr></thead><tbody><tr><td>2026-05-01</td><td>CLX</td><td>Clorox</td><td>Consumer Staples</td><td>XLP</td><td>-9.51%</td><td>-5.0088</td><td>13.6035</td><td>negative_adjusted_return;return_zscore;volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>CBOE</td><td>Cboe Global Markets</td><td>Financials</td><td>XLF</td><td>+9.36%</td><td>5.4367</td><td>2.4753</td><td>positive_adjusted_return;return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>PSKY</td><td>Paramount Skydance Corporation</td><td>Communication Services</td><td>QQQ</td><td>+7.34%</td><td>1.9138</td><td>-0.0828</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>SNDK</td><td>Sandisk</td><td>Information Technology</td><td>QQQ</td><td>+7.29%</td><td>1.3555</td><td>1.0506</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>STX</td><td>Seagate Technology</td><td>Information Technology</td><td>QQQ</td><td>+6.95%</td><td>1.8320</td><td>2.2901</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>SYK</td><td>Stryker Corporation</td><td>Health Care</td><td>XLV</td><td>-5.90%</td><td>-4.5509</td><td>3.8372</td><td>negative_adjusted_return;return_zscore;volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>AIG</td><td>American International Group</td><td>Financials</td><td>XLF</td><td>+5.71%</td><td>3.8320</td><td>2.5647</td><td>positive_adjusted_return;return_zscore;volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>ORCL</td><td>Oracle Corporation</td><td>Information Technology</td><td>QQQ</td><td>+5.51%</td><td>1.7176</td><td>-0.2367</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>DDOG</td><td>Datadog</td><td>Information Technology</td><td>QQQ</td><td>+5.35%</td><td>1.5609</td><td>0.3070</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>IP</td><td>International Paper</td><td>Materials</td><td>XLB</td><td>+4.64%</td><td>1.4329</td><td>2.2159</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>GLW</td><td>Corning Inc.</td><td>Information Technology</td><td>QQQ</td><td>-4.60%</td><td>-0.7984</td><td>-1.3885</td><td>negative_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>INTC</td><td>Intel</td><td>Information Technology</td><td>QQQ</td><td>+4.48%</td><td>1.0774</td><td>1.2782</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>APH</td><td>Amphenol</td><td>Information Technology</td><td>QQQ</td><td>-4.33%</td><td>-1.0618</td><td>-0.9963</td><td>negative_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>LITE</td><td>Lumentum</td><td>Information Technology</td><td>QQQ</td><td>+4.32%</td><td>0.8252</td><td>-0.5711</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>AMGN</td><td>Amgen</td><td>Health Care</td><td>XLV</td><td>-4.18%</td><td>-2.6124</td><td>1.0094</td><td>negative_adjusted_return;return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>FRT</td><td>Federal Realty Investment Trust</td><td>Real Estate</td><td>XLRE</td><td>+4.17%</td><td>3.5622</td><td>2.4707</td><td>positive_adjusted_return;return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>DASH</td><td>DoorDash</td><td>Consumer Discretionary</td><td>XLY</td><td>+4.03%</td><td>1.3004</td><td>-0.6893</td><td>positive_adjusted_return</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>BRO</td><td>Brown &amp; Brown</td><td>Financials</td><td>XLF</td><td>-3.79%</td><td>-2.0789</td><td>1.0374</td><td>return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>DXCM</td><td>Dexcom</td><td>Health Care</td><td>XLV</td><td>+3.59%</td><td>1.3457</td><td>3.6251</td><td>volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>RMD</td><td>ResMed</td><td>Health Care</td><td>XLV</td><td>-3.54%</td><td>-2.3341</td><td>6.6190</td><td>return_zscore;volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>BMY</td><td>Bristol Myers Squibb</td><td>Health Care</td><td>XLV</td><td>-3.34%</td><td>-2.2887</td><td>0.7146</td><td>return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>MCD</td><td>McDonald&#x27;s</td><td>Consumer Discretionary</td><td>XLY</td><td>-2.60%</td><td>-2.0746</td><td>0.4508</td><td>return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>AAPL</td><td>Apple Inc.</td><td>Information Technology</td><td>QQQ</td><td>+2.28%</td><td>2.0490</td><td>2.3708</td><td>return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>PH</td><td>Parker Hannifin</td><td>Industrials</td><td>XLI</td><td>-2.06%</td><td>-1.5685</td><td>3.0746</td><td>volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>CTAS</td><td>Cintas</td><td>Industrials</td><td>XLI</td><td>-1.99%</td><td>-2.0665</td><td>-1.0593</td><td>return_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>WDC</td><td>Western Digital</td><td>Information Technology</td><td>QQQ</td><td>-1.65%</td><td>-0.1517</td><td>2.6189</td><td>volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>CHD</td><td>Church &amp; Dwight</td><td>Consumer Staples</td><td>XLP</td><td>-0.91%</td><td>-0.8404</td><td>2.8409</td><td>volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>GEHC</td><td>GE HealthCare</td><td>Health Care</td><td>XLV</td><td>+0.88%</td><td>0.1167</td><td>2.7578</td><td>volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>FE</td><td>FirstEnergy</td><td>Utilities</td><td>XLU</td><td>-0.62%</td><td>-1.1397</td><td>3.0691</td><td>volume_zscore</td><td>needs_investigation</td></tr><tr><td>2026-05-01</td><td>EBAY</td><td>eBay Inc.</td><td>Consumer Discretionary</td><td>XLY</td><td>+0.33%</td><td>0.2327</td><td>2.5911</td><td>volume_zscore</td><td>needs_investigation</td></tr></tbody></table></section></main>
 </body>
 </html>

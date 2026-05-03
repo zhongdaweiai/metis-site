@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Metis Inference</title>
   <style>
-    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; }
+    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; --red:#a33d3d; --amber:#9a6a12; --blue:#2f5f95; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
     header { background:#101820; color:white; padding:22px 28px 18px; }
     h1 { margin:0 0 6px; font-size:26px; letter-spacing:0; }
@@ -16,23 +16,46 @@
     main { padding:22px 28px 48px; display:grid; gap:20px; }
     section, .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; overflow-x:auto; }
     h2 { margin:0 0 12px; font-size:19px; }
-    h3 { margin:18px 0 10px; font-size:16px; }
+    h3 { margin:0 0 8px; font-size:16px; }
     p, li { line-height:1.55; }
     .muted { color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .hero { display:grid; grid-template-columns:minmax(320px,1.4fr) minmax(280px,.8fr); gap:18px; align-items:stretch; }
+    .lead { font-size:17px; line-height:1.55; max-width:900px; margin:0; }
+    .metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+    .metric { border:1px solid #e3e7ec; border-radius:8px; padding:12px; background:#fbfcfd; }
+    .metric-label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+    .metric-value { font-size:24px; font-weight:700; margin-top:4px; }
+    .metric-note { color:var(--muted); font-size:12px; margin-top:4px; }
+    .insight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+    .insight { border-left:4px solid var(--accent); border-radius:8px; background:#fbfcfd; padding:13px 14px; border-top:1px solid #e5e9ee; border-right:1px solid #e5e9ee; border-bottom:1px solid #e5e9ee; }
+    .insight.warning { border-left-color:var(--amber); }
+    .insight.negative { border-left-color:var(--red); }
+    .insight.blue { border-left-color:var(--blue); }
+    .insight p { margin:0; }
+    .anomaly-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .anomaly-list li { display:grid; grid-template-columns:70px 70px 1fr; gap:10px; align-items:baseline; border-bottom:1px solid #edf0f4; padding-bottom:8px; }
+    .ticker { font-weight:700; }
+    .move { font-variant-numeric:tabular-nums; font-weight:700; }
+    .move.up { color:var(--accent); }
+    .move.down { color:var(--red); }
+    .appendix { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+    .appendix-link { display:grid; gap:4px; border:1px solid #e0e5ea; border-radius:8px; padding:12px; text-decoration:none; background:#fbfcfd; }
+    .appendix-link span { color:var(--muted); font-size:12px; }
     table { width:100%; border-collapse:collapse; font-size:13px; }
     th,td { padding:8px 10px; border-bottom:1px solid #e8ebef; text-align:left; vertical-align:top; }
     th { background:#f0f3f6; font-weight:650; }
     code { background:#eef2f5; border:1px solid #dde4ea; border-radius:4px; padding:1px 4px; }
     a { color:var(--accent); }
+    @media (max-width:760px) { .hero { grid-template-columns:1fr; } .anomaly-list li { grid-template-columns:62px 68px 1fr; } }
   </style>
 </head>
 <body>
   <header>
     <h1>Metis</h1>
-    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:11:57+00:00</div>
+    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:17:43+00:00</div>
   </header>
-  <nav><a class="" href="index.html">Dashboard</a><a class="" href="daily-brief.html">Daily Brief</a><a class="" href="anomalies.html">Anomalies</a><a class="" href="news.html">News</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">Denominator</a><a class="" href="predictions.html">Predictions</a><a class="active" href="inference.html">Inference</a></nav>
+  <nav><a class="" href="index.html">认知面板</a><a class="" href="daily-brief.html">日报</a><a class="active" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
   <main>
     <section><h2>Model Comparisons</h2><table><thead><tr><th>case_id</th><th>hypothesis_id</th><th>prior_probability</th><th>posterior_probability</th><th>evidence_count</th><th>reliability_adjusted_log_bayes_factor</th><th>status</th><th>interpretation</th></tr></thead><tbody><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_tpu_substitution</td><td>0.350000</td><td>0.753446</td><td>2</td><td>1.485741</td><td>leading</td><td>evidence strengthened this hypothesis; posterior=75.3%, prior=35.0%</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_positioning_noise</td><td>0.250000</td><td>0.176904</td><td>2</td><td>0.373163</td><td>watch</td><td>evidence only modestly changed this hypothesis; posterior=17.7%, prior=25.0%</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_macro_beta</td><td>0.250000</td><td>0.069650</td><td>1</td><td>-0.558955</td><td>weakened</td><td>evidence weakened this hypothesis; posterior=7.0%, prior=25.0%</td></tr></tbody></table></section>
     <section><h2>Hypotheses</h2><table><thead><tr><th>case_id</th><th>hypothesis_id</th><th>prior_probability</th><th>posterior_probability</th><th>status</th><th>proposition</th><th>market_implication</th></tr></thead><tbody><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_tpu_substitution</td><td>0.35</td><td>0.753446</td><td>active</td><td>Alphabet Cloud and TPU evidence increased the probability that hyperscaler AI capex will be split away from Nvidia into self-built or alternative silicon</td><td>NVDA/AMD/AVGO incumbent suppliers may underperform relative to hyperscalers or selected AI infrastructure beneficiaries</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_macro_beta</td><td>0.25</td><td>0.069650</td><td>active</td><td>NVDA weakness was mainly a broad macro or beta drawdown rather than a company-specific AI capex mix shift</td><td>NVDA move should not persist as idiosyncratic underperformance if broad risk appetite remains stable</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_positioning_noise</td><td>0.25</td><td>0.176904</td><td>active</td><td>NVDA weakness was mostly short-term positioning noise after a crowded rally rather than a durable fundamental repricing</td><td>NVDA should recover relative performance quickly if no new evidence confirms share loss</td></tr></tbody></table></section>

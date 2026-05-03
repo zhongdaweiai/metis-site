@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Metis Patterns</title>
   <style>
-    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; }
+    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; --red:#a33d3d; --amber:#9a6a12; --blue:#2f5f95; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
     header { background:#101820; color:white; padding:22px 28px 18px; }
     h1 { margin:0 0 6px; font-size:26px; letter-spacing:0; }
@@ -16,23 +16,46 @@
     main { padding:22px 28px 48px; display:grid; gap:20px; }
     section, .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; overflow-x:auto; }
     h2 { margin:0 0 12px; font-size:19px; }
-    h3 { margin:18px 0 10px; font-size:16px; }
+    h3 { margin:0 0 8px; font-size:16px; }
     p, li { line-height:1.55; }
     .muted { color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .hero { display:grid; grid-template-columns:minmax(320px,1.4fr) minmax(280px,.8fr); gap:18px; align-items:stretch; }
+    .lead { font-size:17px; line-height:1.55; max-width:900px; margin:0; }
+    .metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+    .metric { border:1px solid #e3e7ec; border-radius:8px; padding:12px; background:#fbfcfd; }
+    .metric-label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+    .metric-value { font-size:24px; font-weight:700; margin-top:4px; }
+    .metric-note { color:var(--muted); font-size:12px; margin-top:4px; }
+    .insight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+    .insight { border-left:4px solid var(--accent); border-radius:8px; background:#fbfcfd; padding:13px 14px; border-top:1px solid #e5e9ee; border-right:1px solid #e5e9ee; border-bottom:1px solid #e5e9ee; }
+    .insight.warning { border-left-color:var(--amber); }
+    .insight.negative { border-left-color:var(--red); }
+    .insight.blue { border-left-color:var(--blue); }
+    .insight p { margin:0; }
+    .anomaly-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .anomaly-list li { display:grid; grid-template-columns:70px 70px 1fr; gap:10px; align-items:baseline; border-bottom:1px solid #edf0f4; padding-bottom:8px; }
+    .ticker { font-weight:700; }
+    .move { font-variant-numeric:tabular-nums; font-weight:700; }
+    .move.up { color:var(--accent); }
+    .move.down { color:var(--red); }
+    .appendix { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+    .appendix-link { display:grid; gap:4px; border:1px solid #e0e5ea; border-radius:8px; padding:12px; text-decoration:none; background:#fbfcfd; }
+    .appendix-link span { color:var(--muted); font-size:12px; }
     table { width:100%; border-collapse:collapse; font-size:13px; }
     th,td { padding:8px 10px; border-bottom:1px solid #e8ebef; text-align:left; vertical-align:top; }
     th { background:#f0f3f6; font-weight:650; }
     code { background:#eef2f5; border:1px solid #dde4ea; border-radius:4px; padding:1px 4px; }
     a { color:var(--accent); }
+    @media (max-width:760px) { .hero { grid-template-columns:1fr; } .anomaly-list li { grid-template-columns:62px 68px 1fr; } }
   </style>
 </head>
 <body>
   <header>
     <h1>Metis</h1>
-    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:11:57+00:00</div>
+    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:17:43+00:00</div>
   </header>
-  <nav><a class="" href="index.html">Dashboard</a><a class="" href="daily-brief.html">Daily Brief</a><a class="" href="anomalies.html">Anomalies</a><a class="" href="news.html">News</a><a class="active" href="patterns.html">Patterns</a><a class="" href="denominator.html">Denominator</a><a class="" href="predictions.html">Predictions</a><a class="" href="inference.html">Inference</a></nav>
+  <nav><a class="" href="index.html">认知面板</a><a class="" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="active" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
   <main><section><h2>Pattern Library</h2><table><thead><tr><th>pattern_id</th><th>pattern_name</th><th>pattern_family</th><th>trigger_conditions</th><th>base_rate_status</th><th>example_case_ids</th></tr></thead><tbody><tr><td>customer_vertical_integration_capex_mix_shift</td><td>Customer vertical integration changes capex beneficiary map</td><td>cross_asset_transmission</td><td>Customer reports strong demand/capex while also scaling self-built substitute; incumbent supplier underperforms</td><td>low_n</td><td>nvda_2026_04_30</td></tr><tr><td>inventory_cycle_guidance_reversal</td><td>Inventory-cycle guidance reversal</td><td>earnings_surprise</td><td>Company previously pressured by inventory digestion or weak guide reports stronger bookings and above-consensus forward outlook</td><td>low_n</td><td>pi_2026_04_30</td></tr><tr><td>new_tam_repricing_from_platform_pivot</td><td>New TAM repricing from platform pivot</td><td>narrative_repricing</td><td>Mature incumbent credibly opens a large adjacent market in management commentary or customer wins</td><td>low_n</td><td>qcom_2026_04_30</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AI capex physical infrastructure read-through</td><td>cross_asset_transmission</td><td>AI/data-center demand raises orders or guidance for power, grid, HVAC, machinery, storage, or construction providers</td><td>low_n</td><td>pwr_2026_04_30;cat_2026_04_30;carr_2026_04_30</td></tr><tr><td>organic_growth_quality_miss</td><td>Organic growth quality miss</td><td>earnings_quality</td><td>Asset-light services company reports EPS resilience but revenue/organic growth misses or decelerates</td><td>low_n</td><td>wtw_2026_04_30</td></tr><tr><td>cyclical_guidance_cut_on_cost_pressure</td><td>Cyclical guidance cut on cost pressure</td><td>earnings_quality</td><td>Cyclical/material company lowers EBITDA or earnings outlook due to cost inflation, weak demand, or macro pressure</td><td>low_n</td><td>ip_2026_04_30</td></tr><tr><td>legacy_asset_ai_infrastructure_repricing</td><td>Legacy asset company becomes AI infrastructure play</td><td>narrative_repricing</td><td>Legacy storage/real-asset company reports strong data-center/digital growth layered on stable cash flows</td><td>low_n</td><td>irm_2026_04_30</td></tr><tr><td>guidance_raise_plus_pipeline_derisking</td><td>Guidance raise plus pipeline de-risking</td><td>fundamental_repricing</td><td>Pharma/biotech company raises guidance while regulatory or clinical progress expands the future market</td><td>low_n</td><td>lly_2026_04_30</td></tr><tr><td>segment_acceleration_repricing</td><td>Segment acceleration repricing</td><td>earnings_surprise</td><td>Multi-segment company reports unusually strong growth in one high-quality segment that changes blended expectations</td><td>low_n</td><td>txt_2026_04_30</td></tr><tr><td>segment_mix_repricing</td><td>Segment mix repricing</td><td>earnings_surprise</td><td>Company reports mixed headline results but a higher-quality or faster-growing segment becomes more important to valuation</td><td>low_n</td><td>carr_2026_04_30</td></tr></tbody></table></section></main>
 </body>
 </html>

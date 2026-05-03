@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Metis Dashboard</title>
+  <title>Metis Overview</title>
   <style>
-    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; }
+    :root { color-scheme: light; --ink:#18202a; --muted:#687282; --line:#d9dee5; --bg:#f6f7f9; --panel:#fff; --accent:#126c5b; --red:#a33d3d; --amber:#9a6a12; --blue:#2f5f95; }
     body { margin:0; font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
     header { background:#101820; color:white; padding:22px 28px 18px; }
     h1 { margin:0 0 6px; font-size:26px; letter-spacing:0; }
@@ -16,33 +16,85 @@
     main { padding:22px 28px 48px; display:grid; gap:20px; }
     section, .panel { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; overflow-x:auto; }
     h2 { margin:0 0 12px; font-size:19px; }
-    h3 { margin:18px 0 10px; font-size:16px; }
+    h3 { margin:0 0 8px; font-size:16px; }
     p, li { line-height:1.55; }
     .muted { color:var(--muted); }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px; }
+    .hero { display:grid; grid-template-columns:minmax(320px,1.4fr) minmax(280px,.8fr); gap:18px; align-items:stretch; }
+    .lead { font-size:17px; line-height:1.55; max-width:900px; margin:0; }
+    .metric-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+    .metric { border:1px solid #e3e7ec; border-radius:8px; padding:12px; background:#fbfcfd; }
+    .metric-label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.03em; }
+    .metric-value { font-size:24px; font-weight:700; margin-top:4px; }
+    .metric-note { color:var(--muted); font-size:12px; margin-top:4px; }
+    .insight-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:12px; }
+    .insight { border-left:4px solid var(--accent); border-radius:8px; background:#fbfcfd; padding:13px 14px; border-top:1px solid #e5e9ee; border-right:1px solid #e5e9ee; border-bottom:1px solid #e5e9ee; }
+    .insight.warning { border-left-color:var(--amber); }
+    .insight.negative { border-left-color:var(--red); }
+    .insight.blue { border-left-color:var(--blue); }
+    .insight p { margin:0; }
+    .anomaly-list { list-style:none; padding:0; margin:0; display:grid; gap:8px; }
+    .anomaly-list li { display:grid; grid-template-columns:70px 70px 1fr; gap:10px; align-items:baseline; border-bottom:1px solid #edf0f4; padding-bottom:8px; }
+    .ticker { font-weight:700; }
+    .move { font-variant-numeric:tabular-nums; font-weight:700; }
+    .move.up { color:var(--accent); }
+    .move.down { color:var(--red); }
+    .appendix { display:grid; grid-template-columns:repeat(auto-fit,minmax(190px,1fr)); gap:10px; }
+    .appendix-link { display:grid; gap:4px; border:1px solid #e0e5ea; border-radius:8px; padding:12px; text-decoration:none; background:#fbfcfd; }
+    .appendix-link span { color:var(--muted); font-size:12px; }
     table { width:100%; border-collapse:collapse; font-size:13px; }
     th,td { padding:8px 10px; border-bottom:1px solid #e8ebef; text-align:left; vertical-align:top; }
     th { background:#f0f3f6; font-weight:650; }
     code { background:#eef2f5; border:1px solid #dde4ea; border-radius:4px; padding:1px 4px; }
     a { color:var(--accent); }
+    @media (max-width:760px) { .hero { grid-template-columns:1fr; } .anomaly-list li { grid-template-columns:62px 68px 1fr; } }
   </style>
 </head>
 <body>
   <header>
     <h1>Metis</h1>
-    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:11:57+00:00</div>
+    <div class="subtitle">Outcome-first market learning system · generated 2026-05-03T00:17:43+00:00</div>
   </header>
-  <nav><a class="active" href="index.html">Dashboard</a><a class="" href="daily-brief.html">Daily Brief</a><a class="" href="anomalies.html">Anomalies</a><a class="" href="news.html">News</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">Denominator</a><a class="" href="predictions.html">Predictions</a><a class="" href="inference.html">Inference</a></nav>
+  <nav><a class="active" href="index.html">认知面板</a><a class="" href="daily-brief.html">日报</a><a class="" href="inference.html">推理</a><a class="" href="anomalies.html">异常</a><a class="" href="news.html">新闻</a><a class="" href="patterns.html">Patterns</a><a class="" href="denominator.html">分母</a><a class="" href="predictions.html">预测</a></nav>
   <main>
-    <div class="grid">
-      <section><h2>Price Queue</h2><table><thead><tr><th>as_of</th><th>ticker</th><th>name</th><th>adjusted_return</th><th>return_z</th><th>volume_z</th><th>trigger</th></tr></thead><tbody><tr><td>2026-05-01</td><td>CLX</td><td>Clorox</td><td>-9.51%</td><td>-5.0088</td><td>13.6035</td><td>negative_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-05-01</td><td>CBOE</td><td>Cboe Global Markets</td><td>+9.36%</td><td>5.4367</td><td>2.4753</td><td>positive_adjusted_return;return_zscore</td></tr><tr><td>2026-05-01</td><td>PSKY</td><td>Paramount Skydance Corporation</td><td>+7.34%</td><td>1.9138</td><td>-0.0828</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>SNDK</td><td>Sandisk</td><td>+7.29%</td><td>1.3555</td><td>1.0506</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>STX</td><td>Seagate Technology</td><td>+6.95%</td><td>1.8320</td><td>2.2901</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>SYK</td><td>Stryker Corporation</td><td>-5.90%</td><td>-4.5509</td><td>3.8372</td><td>negative_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-05-01</td><td>AIG</td><td>American International Group</td><td>+5.71%</td><td>3.8320</td><td>2.5647</td><td>positive_adjusted_return;return_zscore;volume_zscore</td></tr><tr><td>2026-05-01</td><td>ORCL</td><td>Oracle Corporation</td><td>+5.51%</td><td>1.7176</td><td>-0.2367</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>DDOG</td><td>Datadog</td><td>+5.35%</td><td>1.5609</td><td>0.3070</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>IP</td><td>International Paper</td><td>+4.64%</td><td>1.4329</td><td>2.2159</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>GLW</td><td>Corning Inc.</td><td>-4.60%</td><td>-0.7984</td><td>-1.3885</td><td>negative_adjusted_return</td></tr><tr><td>2026-05-01</td><td>INTC</td><td>Intel</td><td>+4.48%</td><td>1.0774</td><td>1.2782</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>APH</td><td>Amphenol</td><td>-4.33%</td><td>-1.0618</td><td>-0.9963</td><td>negative_adjusted_return</td></tr><tr><td>2026-05-01</td><td>LITE</td><td>Lumentum</td><td>+4.32%</td><td>0.8252</td><td>-0.5711</td><td>positive_adjusted_return</td></tr><tr><td>2026-05-01</td><td>AMGN</td><td>Amgen</td><td>-4.18%</td><td>-2.6124</td><td>1.0094</td><td>negative_adjusted_return;return_zscore</td></tr></tbody></table></section>
-      <section><h2>News Queue</h2><table><thead><tr><th>trigger_score</th><th>source</th><th>published_at</th><th>tickers</th><th>tags</th><th>title</th></tr></thead><tbody><tr><td>0.75</td><td>SEC Current 8-K</td><td>2026-05-01T17:17:13-04:00</td><td></td><td>mna;regulatory</td><td>8-K - Lunai Bioworks Inc. (0001527728) (Filer)</td></tr><tr><td>0.75</td><td>GlobeNewswire Company News</td><td>2026-05-02T07:26:00+00:00</td><td></td><td>ai;cost_pressure;earnings</td><td>Mohawk Industries presenta i risultati del primo trimestre 2026</td></tr><tr><td>0.75</td><td>MarketWatch Top Stories</td><td>2026-05-02T17:38:00+00:00</td><td></td><td>cost_pressure;funding;guidance</td><td>Higher inflation is on the way. The Fed needs to make this clear before it raises rates.</td></tr><tr><td>0.72</td><td>Yahoo Finance</td><td>2026-05-01T17:38:56Z</td><td>AMZN</td><td>ai;earnings</td><td>$50 Billion in Revenue a Year: How the Trainium Chip Business Could Soon Seriously Move the Needle for Amazon Stock</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-05-01T17:29:40-04:00</td><td></td><td>regulatory</td><td>8-K - authID Inc. (0001534154) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-05-01T17:28:11-04:00</td><td></td><td>regulatory</td><td>8-K - BIOTRICITY INC. (0001630113) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-05-01T17:25:48-04:00</td><td></td><td>regulatory</td><td>8-K - HNO International, Inc. (0001342916) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-05-01T17:23:22-04:00</td><td></td><td>regulatory</td><td>8-K - DevvStream Corp. (0001854480) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-05-01T17:22:49-04:00</td><td></td><td>regulatory</td><td>8-K - Chord Energy Corp (0001486159) (Filer)</td></tr><tr><td>0.60</td><td>SEC Current 8-K</td><td>2026-05-01T17:21:38-04:00</td><td></td><td>regulatory</td><td>8-K - Z Squared Inc. (0001759186) (Filer)</td></tr><tr><td>0.60</td><td>GlobeNewswire Earnings</td><td>2026-05-01T20:51:00+00:00</td><td></td><td>mna;regulatory</td><td>Exodus Movement Acquires Outstanding Shares of Monavate Holdings Limited and Baanx.com Ltd.</td></tr><tr><td>0.60</td><td>GlobeNewswire Earnings</td><td>2026-05-01T13:28:00+00:00</td><td></td><td>capex;mna</td><td>Gibson Energy Announces Closing of $400 Million Chauvin Infrastructure Acquisition to Extend Hardisty Platform and Sanctioning of Hardisty Connection Project</td></tr><tr><td>0.60</td><td>GlobeNewswire Company News</td><td>2026-05-02T00:00:00+00:00</td><td></td><td>cost_pressure;regulatory</td><td>Faircourt Gold Income Corp. Announces Net Asset Value for Annual Redemption of Class A Shares</td></tr><tr><td>0.60</td><td>MarketWatch Top Stories</td><td>2026-05-02T20:45:00+00:00</td><td></td><td>funding;regulatory</td><td>‘We’re all worried the honey pot will run dry’: Does the U.S. government borrow from my Social Security to fund federal programs?</td></tr><tr><td>0.60</td><td>MarketWatch Top Stories</td><td>2026-05-02T17:57:00+00:00</td><td></td><td>cost_pressure;earnings</td><td>These financial adviser fees pinch your portfolio — and 2 questions can stop them</td></tr></tbody></table></section>
-      <section><h2>Denominator Samples</h2><table><thead><tr><th>matched_pattern_id</th><th>source_asset</th><th>target_asset</th><th>had_significant_move</th><th>status</th></tr></thead><tbody><tr><td>customer_vertical_integration_capex_mix_shift</td><td>GOOG;GOOGL</td><td>AMD</td><td>false</td><td>resolved</td></tr><tr><td>customer_vertical_integration_capex_mix_shift</td><td>GOOG;GOOGL</td><td>AVGO</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>GOOG;GOOGL</td><td>ETN</td><td>false</td><td>resolved</td></tr><tr><td>customer_vertical_integration_capex_mix_shift</td><td>AMZN</td><td>AMD</td><td>false</td><td>resolved</td></tr><tr><td>customer_vertical_integration_capex_mix_shift</td><td>AMZN</td><td>AVGO</td><td>false</td><td>resolved</td></tr><tr><td>customer_vertical_integration_capex_mix_shift</td><td>AMZN</td><td>NVDA</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AMZN</td><td>CARR</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AMZN</td><td>CAT</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AMZN</td><td>ETN</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AMZN</td><td>NVDA</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AMZN</td><td>PWR</td><td>false</td><td>resolved</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>AMZN</td><td>VRT</td><td>false</td><td>resolved</td></tr></tbody></table></section>
-      <section><h2>Registered Predictions</h2><p class="muted">No rows yet.</p></section>
-      <section><h2>Jaynes Inference</h2><table><thead><tr><th>case_id</th><th>hypothesis_id</th><th>posterior_probability</th><th>evidence_count</th><th>status</th></tr></thead><tbody><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_tpu_substitution</td><td>0.753446</td><td>2</td><td>leading</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_positioning_noise</td><td>0.176904</td><td>2</td><td>watch</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_macro_beta</td><td>0.069650</td><td>1</td><td>weakened</td></tr></tbody></table></section>
+    <div class="hero">
+      <section>
+        <h2>今日 Metis 认知</h2>
+        <p class="lead">先看结论，再看数据。这里展示的是系统今天形成或更新的世界模型：哪些解释更可信、哪些解释被削弱、哪些新闻只补充分母而不构成交易信号。</p>
+      </section>
+      <section>
+        <h2>系统状态</h2>
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">机制</div><div class="metric-value">10</div><div class="metric-note">可迁移 patterns</div></div>
+          <div class="metric"><div class="metric-label">假设</div><div class="metric-value">3</div><div class="metric-note">竞争解释</div></div>
+          <div class="metric"><div class="metric-label">证据</div><div class="metric-value">5</div><div class="metric-note">可更新 evidence</div></div>
+          <div class="metric"><div class="metric-label">分母</div><div class="metric-value">12</div><div class="metric-note">最新 2026-05-01</div></div>
+          <div class="metric"><div class="metric-label">预测</div><div class="metric-value">0</div><div class="metric-note">事前记录</div></div>
+          <div class="metric"><div class="metric-label">异常</div><div class="metric-value">30</div><div class="metric-note">待溯源结果</div></div>
+        </div>
+      </section>
     </div>
-    <section><h2>Pattern Library</h2><table><thead><tr><th>pattern_id</th><th>pattern_family</th><th>base_rate_status</th><th>example_case_ids</th></tr></thead><tbody><tr><td>customer_vertical_integration_capex_mix_shift</td><td>cross_asset_transmission</td><td>low_n</td><td>nvda_2026_04_30</td></tr><tr><td>inventory_cycle_guidance_reversal</td><td>earnings_surprise</td><td>low_n</td><td>pi_2026_04_30</td></tr><tr><td>new_tam_repricing_from_platform_pivot</td><td>narrative_repricing</td><td>low_n</td><td>qcom_2026_04_30</td></tr><tr><td>ai_capex_physical_infrastructure_readthrough</td><td>cross_asset_transmission</td><td>low_n</td><td>pwr_2026_04_30;cat_2026_04_30;carr_2026_04_30</td></tr><tr><td>organic_growth_quality_miss</td><td>earnings_quality</td><td>low_n</td><td>wtw_2026_04_30</td></tr><tr><td>cyclical_guidance_cut_on_cost_pressure</td><td>earnings_quality</td><td>low_n</td><td>ip_2026_04_30</td></tr><tr><td>legacy_asset_ai_infrastructure_repricing</td><td>narrative_repricing</td><td>low_n</td><td>irm_2026_04_30</td></tr><tr><td>guidance_raise_plus_pipeline_derisking</td><td>fundamental_repricing</td><td>low_n</td><td>lly_2026_04_30</td></tr><tr><td>segment_acceleration_repricing</td><td>earnings_surprise</td><td>low_n</td><td>txt_2026_04_30</td></tr><tr><td>segment_mix_repricing</td><td>earnings_surprise</td><td>low_n</td><td>carr_2026_04_30</td></tr></tbody></table></section>
-    <section><h2>Bayesian Belief State</h2><p class="muted">No rows yet.</p></section>
+    <section>
+      <h2>重点发现和系统进步</h2>
+      <div class="insight-grid">
+        <article class="insight neutral"><h3>最强解释</h3><p>nvda_2026_04_30: Alphabet Cloud/TPU 和 Amazon Trainium 线索正在强化“AI capex 从 Nvidia 单一受益转向自研/替代 silicon 分流”的解释. Posterior 75.3%, prior 35.0%, 2 条证据。</p></article>
+        <article class="insight negative"><h3>被削弱的解释</h3><p>hyp_nvda_20260430_macro_beta 被证据削弱到 7.0%。</p></article>
+        <article class="insight blue"><h3>分母带来的认知</h3><p>分母样本累计 12 条。最近主要来自 “$50 Billion in Revenue a Year: How the Trainium Chip Business Could Soon Seriously Move the Needle for Amazon ” 这类新闻，记录了 9 个目标资产没有出现显著波动。</p></article>
+        <article class="insight warning"><h3>交易纪律</h3><p>当前没有已登记的 forward prediction，说明系统仍处于 research / evidence accumulation 模式，不应把页面解读为交易信号。</p></article>
+      </div>
+    </section>
+    <section>
+      <h2>今日需要研究的异常</h2>
+      <ul class="anomaly-list"><li><span class="ticker">CLX</span><span class="move down">-9.51%</span><span class="muted">Clorox</span></li><li><span class="ticker">CBOE</span><span class="move up">+9.36%</span><span class="muted">Cboe Global Markets</span></li><li><span class="ticker">PSKY</span><span class="move up">+7.34%</span><span class="muted">Paramount Skydance Corporation</span></li><li><span class="ticker">SNDK</span><span class="move up">+7.29%</span><span class="muted">Sandisk</span></li><li><span class="ticker">STX</span><span class="move up">+6.95%</span><span class="muted">Seagate Technology</span></li><li><span class="ticker">SYK</span><span class="move down">-5.90%</span><span class="muted">Stryker Corporation</span></li></ul>
+    </section>
+    <section>
+      <h2>推理排行榜</h2>
+      <table><thead><tr><th>case_id</th><th>hypothesis_id</th><th>prior_probability</th><th>posterior_probability</th><th>evidence_count</th><th>status</th><th>interpretation</th></tr></thead><tbody><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_tpu_substitution</td><td>0.350000</td><td>0.753446</td><td>2</td><td>leading</td><td>evidence strengthened this hypothesis; posterior=75.3%, prior=35.0%</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_positioning_noise</td><td>0.250000</td><td>0.176904</td><td>2</td><td>watch</td><td>evidence only modestly changed this hypothesis; posterior=17.7%, prior=25.0%</td></tr><tr><td>nvda_2026_04_30</td><td>hyp_nvda_20260430_macro_beta</td><td>0.250000</td><td>0.069650</td><td>1</td><td>weakened</td><td>evidence weakened this hypothesis; posterior=7.0%, prior=25.0%</td></tr></tbody></table>
+    </section>
+    <section>
+      <h2>原始材料入口</h2>
+      <div class="appendix"><a class="appendix-link" href="inference.html"><strong>推理账本</strong><span>竞争假设、证据、posterior</span></a><a class="appendix-link" href="anomalies.html"><strong>异常队列</strong><span>价格异常候选</span></a><a class="appendix-link" href="news.html"><strong>新闻队列</strong><span>新闻触发器</span></a><a class="appendix-link" href="denominator.html"><strong>分母样本</strong><span>无显著反应的样本</span></a><a class="appendix-link" href="predictions.html"><strong>事前预测</strong><span>prediction cards</span></a><a class="appendix-link" href="patterns.html"><strong>Patterns</strong><span>可迁移机制库</span></a><a class="appendix-link" href="daily-brief.html"><strong>完整日报</strong><span>原始日报</span></a></div>
+    </section>
     </main>
 </body>
 </html>
