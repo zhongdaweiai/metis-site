@@ -1,6 +1,6 @@
 # Metis Jaynes Inference Report
 
-- Generated at: 2026-06-17T06:34:03+00:00
+- Generated at: 2026-06-22T06:36:26+00:00
 - Hypotheses: 3
 - Evidence items: 5
 - Model comparison rows: 3
